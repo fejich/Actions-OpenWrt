@@ -59,8 +59,8 @@ jobs:
       working-directory: /workdir
       run: |
         df -hT $PWD
-        wget $SDK_URL -O /workdir/sdk.tar.xz
-        tar -xf /workdir/sdk.tar.xz /workdir
+        wget -q $SDK_URL -O /workdir/sdk.tar.xz
+        tar -xf /workdir/sdk.tar.xz -C /workdir
         ln -sf /workdir/openwrt-sdk-* $GITHUB_WORKSPACE/openwrt
         git clone PACKEAGE_REPO_URL -b PACKEAGE_REPO_BRANCH n2n
         ln -sf $PWD/n2n/packages/openwrt $GITHUB_WORKSPACE/openwrt/package/n2n
