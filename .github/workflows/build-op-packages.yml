@@ -1,6 +1,7 @@
-name: build-op-packages
+name: build-packages
 
 on:
+  repository_dispatch:
   workflow_dispatch:
 
 env:
