@@ -29,7 +29,7 @@ jobs:
     - name: Clone source code
       run: |
         df -hT $PWD
-        git clone --depth=1 https://github.com/ntop/n2n.git -b ${{ env.N2N_REPO_BRANCH }}
+        git clone https://github.com/ntop/n2n n2n
     - name: Download sdk
       run: |
         df -hT $PWD
