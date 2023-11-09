@@ -8,6 +8,8 @@ env:
   BUILD_VER: 1
   OP_VER: 23.05.0
   N2N_REPO_BRANCH: dev
+  PACKEAGE_REPO_URL: https://github.com/ntop/n2n.git
+  PACKEAGE_REPO_BRANCH: dev
   ARCH_MT7621: ramips-mt7621
   ARCH_FILOGIC: mediatek-filogic
   ARCH_ARMv7: armsr-armv7
@@ -29,7 +31,7 @@ jobs:
     - name: Clone source code
       run: |
         df -hT $PWD
-        git clone https://github.com/ntop/n2n n2n
+        git clone $PACKEAGE_REPO_URL -b $PACKEAGE_REPO_BRANCH n2n
     - name: Download sdk
       run: |
         df -hT $PWD
