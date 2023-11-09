@@ -76,9 +76,13 @@ jobs:
       id: compile
       run: |
         cd openwrt
-        echo -e "$(nproc) thread compile"
+        N2N_PKG_VERSION=$(/workdir/n2n/scripts/version.sh)
+        export N2N_PKG_VERSION
+        echo $N2N_PKG_VERSION
         make defconfig
-        make package/n2n/compile V=s -j$(nproc)
+        make package/n2n/clean V=s
+        make package/n2n/prepare USE_SOURCE_DIR=$(realpath ../n2n) V=s
+        make package/n2n/compile V=s
         echo "::set-output name=status::success"
         grep '^CONFIG_TARGET.*DEVICE.*=y' .config | sed -r 's/.*DEVICE_(.*)=y/\1/' > DEVICE_NAME
         [ -s DEVICE_NAME ] && echo "DEVICE_NAME=_$(cat DEVICE_NAME)" >> $GITHUB_ENV
