@@ -73,6 +73,7 @@ jobs:
         [ -e $FEEDS_CONF ] && mv $FEEDS_CONF openwrt/feeds.conf.default
         chmod +x $DIY_P1_SH
         cd openwrt
+        git checkout 12e94bfc9c975619d433e58e0cbef26283b5a6d4
         $GITHUB_WORKSPACE/$DIY_P1_SH
 
     - name: Update feeds
